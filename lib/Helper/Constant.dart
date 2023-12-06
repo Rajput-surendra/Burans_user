@@ -13,7 +13,7 @@ final String deepLinkName = 'alpha.ecommerce.link';
 final int timeOut = 50;
 const int perPage = 10;
 
-final String baseUrl = 'https://developmentalphawizz.com/burans/app/v1/api/';
-final String imageUrl = 'https://developmentalphawizz.com/burans/';
+final String baseUrl = 'https://buransmart.in/app/v1/api/';
+final String imageUrl = 'https://buransmart.in/';
 
 final String jwtKey = "e1e421dceee9ea718ab764ea4fdef95629e7f415";

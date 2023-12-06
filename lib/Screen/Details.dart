@@ -31,7 +31,7 @@ class _DetailsState extends State<Details> {
     var headers = {
       'Cookie': 'ci_session=7855398310a31f210c6d7a00096e156a7c27686e'
     };
-    var request = http.MultipartRequest('POST', Uri.parse('https://developmentalphawizz.com/burans/app/v1/api/set_bussiness_name'));
+    var request = http.MultipartRequest('POST', Uri.parse('https://buransmart.in/app/v1/api/set_bussiness_name'));
     request.fields.addAll({
       'user_id': '',
       'bussiness_name': bussinessC.text
