@@ -4,13 +4,11 @@ import 'dart:io';
 import 'package:eshop_multivendor/Helper/AppBtn.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/rendering.dart';
-
 import 'Chat.dart';
 import '../Helper/Color.dart';
 import 'package:eshop_multivendor/Helper/Session.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-
 import '../Helper/Constant.dart';
 import '../Helper/SimBtn.dart';
 import '../Helper/String.dart';
@@ -141,7 +139,7 @@ class _CustomerSupportState extends State<CustomerSupport>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.end,
                                         children: [
-                                          setType(),
+                                           setType(),
                                           setEmail(),
                                           setTitle(),
                                           setDesc(),
@@ -420,13 +418,11 @@ class _CustomerSupportState extends State<CustomerSupport>
       try {
         Response response = await post(getTicketTypeApi, headers: headers)
             .timeout(Duration(seconds: timeOut));
-
         var getdata = json.decode(response.body);
         bool error = getdata["error"];
         String? msg = getdata["message"];
         if (!error) {
           var data = getdata["data"];
-
           typeList = (data as List)
               .map((data) => new Model.fromSupport(data))
               .toList();

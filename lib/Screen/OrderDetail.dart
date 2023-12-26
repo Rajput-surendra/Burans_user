@@ -3743,7 +3743,7 @@ class StateOrder extends State<OrderDetail>
                 targetPath = target.path.toString();
               } else {
                 var downloadsDirectory =
-                await DownloadsPathProvider.downloadsDirectory;
+                await getDownloadsDirectory();
                 targetPath = downloadsDirectory!.path.toString();
               }
 

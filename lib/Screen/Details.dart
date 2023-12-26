@@ -33,7 +33,7 @@ class _DetailsState extends State<Details> {
     };
     var request = http.MultipartRequest('POST', Uri.parse('https://buransmart.in/app/v1/api/set_bussiness_name'));
     request.fields.addAll({
-      'user_id': '',
+      'user_id':CUR_USERID.toString(),
       'bussiness_name': bussinessC.text
     });
    print('_____dcssddsss_____${request.fields}_________');
@@ -191,23 +191,30 @@ class _DetailsState extends State<Details> {
                      ),
                      SizedBox(height: 60,),
                      Center(
-                       child: Container(
-                         height: 40,
-                         width: MediaQuery.of(context).size.width,
-                         // color: colors.primary,
-                         decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(10), color: colors.primary),
-                         child:
-                         Align(
-                           alignment: Alignment.center,
-                             child: InkWell(
-                               onTap: () {
-                                 setUserDetails();
+                       child:  InkWell(
+                         onTap:
+                             () {
+                           print("working@@@@@@@@@@");
+                           setUserDetails();
+                         },
+                         child: Container(
+                           height: 40,
+                           width: MediaQuery.of(context).size.width,
+                           // color: colors.primary,
+                           decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(10), color: colors.primary),
+                           child:
+                           Align(
+                             alignment: Alignment.center,
+                               child: InkWell(
+                                 onTap: () {
+                                  // setUserDetails();
 
-                               },
-                                 child: Text("Submit", style: TextStyle(fontSize: 18, color: colors.lightWhite2),
-                                 ),
-                             ),
+                                 },
+                                   child: Text("Submit", style: TextStyle(fontSize: 18, color: colors.lightWhite2),
+                                   ),
+                               ),
+                           ),
                          ),
                        ),
                      ),

@@ -37,9 +37,7 @@ class _ChatState extends State<Chat> {
   List<Model> chatList = [];
   late Map<String?, String> downloadlist;
   String _filePath = "";
-
   ScrollController _scrollController = new ScrollController();
-
   @override
   void initState() {
     super.initState();
@@ -228,7 +226,7 @@ class _ChatState extends State<Chat> {
         _filePath = target.path.toString();
       } else {
         Directory? downloadsDirectory =
-            await (DownloadsPathProvider.downloadsDirectory);
+            await getDownloadsDirectory();
         _filePath = downloadsDirectory!.path.toString();
       }
 
@@ -256,7 +254,6 @@ class _ChatState extends State<Chat> {
             headers: {"auth": "test_for_sql_encoding"},
             showNotification: true,
             openFileFromNotification: true);
-
         setState(() {
           downloadlist[mid] = taskid.toString();
         });
@@ -293,7 +290,7 @@ class _ChatState extends State<Chat> {
       _filePath = target.path.toString();
     } else {
       Directory? downloadsDirectory =
-          await (DownloadsPathProvider.downloadsDirectory);
+          await getDownloadsDirectory();
       _filePath = downloadsDirectory!.path.toString();
     }
   }

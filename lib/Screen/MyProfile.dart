@@ -42,13 +42,13 @@ import 'My_Wallet.dart';
 import 'Privacy_Policy.dart';
 
 class MyProfile extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => StateProfile();
 }
-enum Availability { loading, available, unavailable }
-class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
 
+enum Availability { loading, available, unavailable }
+
+class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   //String? profile, email;
   final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   final InAppReview _inAppReview = InAppReview.instance;
@@ -95,7 +95,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
           // This plugin cannot be tested on Android by installing your app
           // locally. See https://github.com/britannio/in_app_review#testing for
           // more information.
-          _availability =  !Platform.isAndroid
+          _availability = !Platform.isAndroid
               ? Availability.available
               : Availability.unavailable;
         });
@@ -130,7 +130,6 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
 
       _getSaved();
     });
-
   }
 
   _getSaved() async {
@@ -190,7 +189,8 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                     Selector<UserProvider, String>(
                         selector: (_, provider) => provider.curUserName,
                         builder: (context, userName, child) {
-                          nameController = TextEditingController(text: userName);
+                          nameController =
+                              TextEditingController(text: userName);
                           return Text(
                             userName == ""
                                 ? getTranslated(context, 'GUEST')!
@@ -199,7 +199,8 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                 .textTheme
                                 .subtitle1!
                                 .copyWith(
-                                  color: Theme.of(context).colorScheme.fontColor,
+                                  color:
+                                      Theme.of(context).colorScheme.fontColor,
                                 ),
                           );
                         }),
@@ -264,7 +265,8 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                               padding: const EdgeInsetsDirectional.only(top: 7),
                               child: InkWell(
                                 child: Text(
-                                    getTranslated(context, 'LOGIN_REGISTER_LBL')!,
+                                    getTranslated(
+                                        context, 'LOGIN_REGISTER_LBL')!,
                                     style: Theme.of(context)
                                         .textTheme
                                         .caption!
@@ -285,17 +287,19 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-              CUR_USERID != null ? IconButton(
-                  onPressed: () async {
-                    var data = await Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => EditProfile()));
-                    if (data == true) {
-                      setState(() {
-                      });
-                    }
-                  },
-                  icon: Icon(Icons.edit)
-              ) : Container()
+              CUR_USERID != null
+                  ? IconButton(
+                      onPressed: () async {
+                        var data = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfile()));
+                        if (data == true) {
+                          setState(() {});
+                        }
+                      },
+                      icon: Icon(Icons.edit))
+                  : Container()
             ],
           ),
         ));
@@ -524,11 +528,17 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
         // _getDivider(),
         _getDrawerItem(getTranslated(context, 'SHARE_APP')!,
             'assets/images/pro_share.svg'),
+        CUR_USERID == "" || CUR_USERID == null
+            ? Container()
+            : _getDrawerItem(
+            getTranslated(context, 'Delete Account') ?? 'Delete Account',
+            'assets/images/pro_logout.svg'),
         // CUR_USERID == "" || CUR_USERID == null ? Container() : _getDivider(),
         CUR_USERID == "" || CUR_USERID == null
             ? Container()
             : _getDrawerItem(getTranslated(context, 'LOGOUT')!,
                 'assets/images/pro_logout.svg'),
+
       ],
     );
   }
@@ -560,7 +570,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
           style: TextStyle(
               color: Theme.of(context).colorScheme.lightBlack, fontSize: 15),
         ),
-        onTap: () async{
+        onTap: () async {
           if (title == getTranslated(context, 'MY_ORDERS_LBL')) {
             Navigator.push(
               context,
@@ -680,6 +690,9 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             openChangePasswordBottomSheet();
           } else if (title == getTranslated(context, 'CHANGE_LANGUAGE_LBL')) {
             openChangeLanguageBottomSheet();
+          } else if (title ==
+              (getTranslated(context, 'Delete Account') ?? 'Delete Account')) {
+            deleteAccountDailog();
           }
         },
       ),
@@ -813,9 +826,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
 
   //Future<void> _requestReview() => _inAppReview.requestReview();
   Future<void> _openStoreListing() => _inAppReview.openStoreListing(
-    appStoreId: 'com.burans.user',
-    microsoftStoreId: "microsoftStoreId"
-  );
+      appStoreId: 'com.burans.user', microsoftStoreId: "microsoftStoreId");
   _launchURLBrowser() async {
     const url = 'https://play.google.com/store/apps/details?id=com.ZuqZuq';
     if (await canLaunch(url)) {
@@ -852,13 +863,61 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   //   );
   // }
 
- // requestReview();
+  // requestReview();
 
-        // a
-        // //appStoreId,
-        //
-        // microsoftStoreId: 'microsoftStoreId',
-     // );
+  // a
+  // //appStoreId,
+  //
+  // microsoftStoreId: 'microsoftStoreId',
+  // );
+
+  deleteAccountDailog() async {
+    await dialogAnimate(context,
+        StatefulBuilder(builder: (BuildContext context, StateSetter setStater) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setStater) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5.0))),
+          content: Text(
+            getTranslated(context, 'Delete Account') ?? 'Delete Account',
+            style: Theme.of(this.context)
+                .textTheme
+                .subtitle1!
+                .copyWith(color: Theme.of(context).colorScheme.fontColor),
+          ),
+          actions: <Widget>[
+            new TextButton(
+                child: Text(
+                  getTranslated(context, 'NO')!,
+                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                      color: Theme.of(context).colorScheme.lightBlack,
+                      fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                }),
+            new TextButton(
+                child: Text(
+                  getTranslated(context, 'YES')!,
+                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                      color: Theme.of(context).colorScheme.fontColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  deleteAccount(CUR_USERID);
+                  SettingProvider settingProvider =
+                      Provider.of<SettingProvider>(context, listen: false);
+                  settingProvider.clearUserSession(context);
+                  //favList.clear();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/home', (Route<dynamic> route) => false);
+                })
+          ],
+        );
+      });
+    }));
+  }
 
   logOutDailog() async {
     await dialogAnimate(context,
@@ -914,7 +973,6 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
       getTranslated(context, 'HINDI_LAN'),
       getTranslated(context, 'CHINESE_LAN'),
       getTranslated(context, 'SPANISH_LAN'),
-
       getTranslated(context, 'ARABIC_LAN'),
       getTranslated(context, 'RUSSIAN_LAN'),
       getTranslated(context, 'JAPANISE_LAN'),
@@ -967,9 +1025,11 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                           UserDetails? data = snapshot.data;
                           // user.setEmail("${data!.date![0].email}");
                           // user.setName("${data.date![0].username}");
-                          print("Profile Data ========================> ${data!.date![0].proPic}");
+                          print(
+                              "Profile Data ========================> ${data!.date![0].proPic}");
                           return data.date![0].proPic != null
-                              ? Image.network("$imageUrl${data.date![0].proPic}")
+                              ? Image.network(
+                                  "$imageUrl${data.date![0].proPic}")
                               : Image.asset("assets/images/placeholder.png");
                         } else if (snapshot.hasError) {
                           return Icon(Icons.error_outline);

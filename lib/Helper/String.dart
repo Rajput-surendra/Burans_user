@@ -1,11 +1,11 @@
 import 'package:eshop_multivendor/Helper/Constant.dart';
 
+
 final Uri getSellerApi = Uri.parse(baseUrl + 'get_sellers');
 final Uri getSliderApi = Uri.parse(baseUrl + 'get_slider_images');
 final Uri getCatApi = Uri.parse(baseUrl + 'get_categories');
 final Uri getUserDetailsApi = Uri.parse(baseUrl + 'get_user_details');
 final Uri updateUserApi = Uri.parse(baseUrl + 'update_user');
-
 final Uri getSectionApi = Uri.parse(baseUrl + 'get_sections');
 final Uri getSettingApi = Uri.parse(baseUrl + 'get_settings');
 final Uri getSubcatApi = Uri.parse(baseUrl + 'get_subcategories_by_category_id');
@@ -55,12 +55,11 @@ final Uri flutterwaveApi = Uri.parse(baseUrl + 'flutterwave_webview');
 final Uri getMsgApi = Uri.parse(baseUrl + 'get_messages');
 final Uri setBankProofApi = Uri.parse(baseUrl + 'send_bank_transfer_proof');
 final Uri checkDeliverableApi = Uri.parse(baseUrl + "is_product_delivarable");
+final Uri getDeleteAccountApi = Uri.parse(baseUrl + 'delete_user');
 final Uri checkCartDelApi =
     Uri.parse(baseUrl + 'check_cart_products_delivarable');
-
 final String ISFIRSTTIME = 'isfirst$appName';
 final String HISTORYLIST = '$appName+historyList';
-
 const String ID = 'id';
 const String TYPE = 'type';
 const String TYPE_ID = 'type_id';
@@ -101,7 +100,6 @@ const String PORDER = 'p_order';
 const String DEL_CHARGES = 'delivery_charges';
 const String FREE_AMT = 'minimum_free_delivery_order_amount';
 final String ISFROMBACK = "isfrombackground$appName";
-
 const String LIMIT = 'limit';
 const String OFFSET = 'offset';
 const String PRIVACY_POLLICY = 'privacy_policy';
@@ -135,7 +133,6 @@ const String TOP_RETAED = 'top_rated_product';
 const String WALLET = 'wallet';
 const String CREDIT = 'credit';
 const String REV_IMG = 'review_images';
-
 const String USER_NAME = 'user_name';
 const String USERNAME = 'username';
 const String ADDRESS = 'address';
@@ -199,7 +196,6 @@ const String ORDER_ID = 'order_id';
 const String IS_SIMILAR = 'is_similar_products';
 const String ALL = 'all';
 const String PLACED = 'received';
-
 const String SHIPED = 'shipped';
 const String PROCESSED = 'processed';
 const String DELIVERD = 'delivered';
@@ -280,7 +276,6 @@ const String MEDIA = 'media';
 const String ICON = 'type';
 const String STYPE = 'swatche_type';
 const String SVALUE = 'swatche_value';
-
 const String MINPRICE = 'min_price';
 const String MAXPRICE = 'max_price';
 const String ZIPCODEID = 'zipcode_id';
@@ -289,42 +284,31 @@ const String REMAIN_DAY = 'remaining_day';
 const String PROMO_CODES = 'promo_codes';
 const String DISCOUNT = 'discount';
 const String ORDER_NOTE = 'order_note';
-
 const String SELLER_ID = 'seller_id';
 const String SELLER_NAME = 'seller_name';
 const String SELLER_PROFILE = 'seller_profile';
 const String SELLER_RATING = 'seller_rating';
 const String STORE_DESC = 'store_description';
 const String STORE_NAME = 'store_name';
-
 const String MIN_CART_AMT = 'minimum_cart_amt';
-
 const String ATTACHMENTS = 'attachments';
-
 const String ATTACHMENT = 'attachment';
 const String BANK_STATUS = 'banktransfer_status';
-
 String ISDARK = "";
 final String PAYPAL_RESPONSE_URL = "$baseUrl" + "app_payment_status";
 final String FLUTTERWAVE_RES_URL = baseUrl + "flutterwave-payment-response";
-
 String? CUR_CURRENCY = '';
-
 String? CUR_USERID;
-
 String? RETURN_DAYS = '';
 String? MAX_ITEMS = '';
 String? REFER_CODE = '';
 String? MIN_AMT = '';
 String? CUR_DEL_CHR = '';
 String? MIN_ALLOW_CART_AMT = '';
-
 String? CUR_TICK_ID = '';
-
 bool ISFLAT_DEL = true;
 bool extendImg = true;
 bool cartBtnList = true;
 bool refer = true;
-
 double? deviceHeight;
 double? deviceWidth;
